@@ -8,10 +8,12 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(express.static('public'));
+
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "../client/levelsm_blog/public/upload");
+    cb(null, "./public/upload");
   },
   filename: function (req, file, cb) {
     const new_name = file.originalname.replaceAll(" ", "_")
